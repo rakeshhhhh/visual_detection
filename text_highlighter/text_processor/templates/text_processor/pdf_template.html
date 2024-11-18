@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PDF Document</title>
+</head>
+<body>
+    <center><h1>VISUAL DEFECT REPORT</h1><br><br></center>
+<!--    {% if user_text %}-->
+<!--    <div class="box">-->
+<!--        <h2>Input Text: </h2><br>-->
+<!--        <p>{{ user_text }}</p><br>-->
+<!--    </div>-->
+<!--    <div class="box">-->
+<!--        <h2>Incorrect Words: </h2><br>-->
+<!--        <p>-->
+<!--            {% for word in incorrect_words %}-->
+<!--            <span class="highlight">{{ word }}</span>-->
+<!--            {% endfor %}-->
+<!--        </p><br>-->
+<!--    </div>-->
+<!--    {% endif %}-->
+
+    <div class="row">
+<!--        {% if image_url %}-->
+<!--        <div class="box">-->
+<!--            <h2>Uploaded Image: </h2><br>-->
+<!--            <img src="{{ image_url }}" alt="Expected Image" style="width: 100%; height: auto;"><br>-->
+<!--        </div><br><br>-->
+<!--        {% endif %}-->
+    </div>
+
+    <div class="row">
+<!--        {% if extracted_text %}-->
+<!--        <div class="col-md-6 col-sm-12">-->
+<!--            <div class="single-blog-item">-->
+<!--                <div class="single-blog-item-txt">-->
+<!--                    <h2>Extracted Text</h2><br>-->
+<!--                    <textarea rows="15" cols="65" readonly>{{ extracted_text }}</textarea>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        {% endif %}-->
+
+<!--        {% if corrected_text %}-->
+<!--        <div class="col-md-6 col-sm-12">-->
+<!--            <div class="single-blog-item">-->
+<!--                <div class="single-blog-item-txt">-->
+<!--                    <h2>Corrected Text</h2><br>-->
+<!--                    <textarea rows="15" cols="65" readonly>{{ corrected_text }}</textarea>-->
+<!--                </div><br><br>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        {% endif %}-->
+    </div>
+
+    <div class="row">
+        {% if highlighted_image_url %}
+        <div class="box">
+            <h2>Uploaded Image: </h2><br>
+            <img src="{{ highlighted_image_url }}" alt="Highlighted Image" style="width: 100%; height: auto;">
+        </div><br><br>
+        {% endif %}
+
+        {% if c_image_url %}
+        <h2>Comparison Results:</h2><br>
+        <h3>Expected Image:</h3><br>
+        <img src="{{ c_image_url }}" alt="Expected Image" style="width: 100%; height: auto;"><br>
+<!--        <br><h3>Image 1 with Differences:</h3><br>-->
+<!--        <img src="{{ diff_image_url1 }}" alt="Image 1 with Differences" style="width: 100%; height: auto;"><br>-->
+        <br><h3>Image 2 with Differences:</h3><br>
+        <img src="{{ diff_image_url2 }}" alt="Image 2 with Differences" style="width: 100%; height: auto;"><br>
+<!--        <br><h3>Combined Differences:</h3><br>-->
+<!--        <img src="{{ diff_combined_url }}" alt="Combined Differences" style="width: 100%; height: auto;"><br>-->
+        <br><h3>Spotted Differences:</h3><br>
+        <p>{{ differences_text|safe }}</p><br>
+        {% endif %}
+    </div>
+</body>
+</html>
+

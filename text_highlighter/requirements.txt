@@ -1,0 +1,10 @@
+django
+boto3
+groq
+Pillow
+ipython
+matplotlib
+opencv-python
+scikit-image
+xhtml2pdf
+google-generativeai

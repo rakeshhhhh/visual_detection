@@ -1,0 +1,315 @@
+<!doctype html>
+{% load static %}
+<html class="no-js" lang="en">
+
+    <head>
+        <!-- meta data -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+        <!--font-family-->
+		<link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+        <!-- title of site -->
+        <title>Automated Mistake Correction</title>
+
+        <!-- For favicon png -->
+		<link rel="shortcut icon" type="image/icon" href="{% static 'text_processor/assets/logo/favicon.png' %}"/>
+
+        <!--font-awesome.min.css-->
+        <link rel="stylesheet" href="{% static 'text_processor/assets/css/font-awesome.min.css' %}">
+
+        <!--linear icon css-->
+		<link rel="stylesheet" href="{% static 'text_processor/assets/css/linearicons.css' %}">
+
+		<!--animate.css-->
+        <link rel="stylesheet" href="{% static 'text_processor/assets/css/animate.css' %}">
+
+		<!--flaticon.css-->
+        <link rel="stylesheet" href="{% static 'text_processor/assets/css/flaticon.css' %}">
+
+		<!--slick.css-->
+        <link rel="stylesheet" href="{% static 'text_processor/assets/css/slick.css' %}">
+		<link rel="stylesheet" href="{% static 'text_processor/assets/css/slick-theme.css' %}">
+
+        <!--bootstrap.min.css-->
+        <link rel="stylesheet" href="{% static 'text_processor/assets/css/bootstrap.min.css' %}">
+
+		<!-- bootsnav -->
+		<link rel="stylesheet" href="{% static 'text_processor/assets/css/bootsnav.css' %}" >
+
+        <!--style.css-->
+        <link rel="stylesheet" href="{% static 'text_processor/assets/css/style.css' %}">
+
+        <!--responsive.css-->
+        <link rel="stylesheet" href="{% static 'text_processor/assets/css/responsive.css' %}">
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+
+        <!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+			<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+    </head>
+
+	<body>
+		<!--[if lte IE 9]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+        <![endif]-->
+
+
+		<!-- top-area Start -->
+		<section class="top-area">
+			<div class="header-area">
+				<!-- Start Navigation -->
+			    <nav class="navbar navbar-default bootsnav  navbar-sticky navbar-scrollspy"  data-minus-value-desktop="70" data-minus-value-mobile="55" data-speed="1000">
+
+			        <div class="container">
+
+			            <!-- Start Header Navigation -->
+			            <div class="navbar-header">
+			                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+			                    <i class="fa fa-bars"></i>
+			                </button>
+			                <a class="navbar-brand" href="index.html">Correct<span>mistakes</span></a>
+
+			            </div><!--/.navbar-header-->
+			            <!-- End Header Navigation -->
+
+			            <!-- Collect the nav links, forms, and other content for toggling -->
+			            <div class="collapse navbar-collapse menu-ui-design" id="navbar-menu">
+			                <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
+			                    <li class=" scroll active"><a href="#home">home</a></li>
+			                </ul><!--/.nav -->
+			            </div><!-- /.navbar-collapse -->
+			        </div><!--/.container-->
+			    </nav><!--/nav-->
+			    <!-- End Navigation -->
+			</div><!--/.header-area-->
+		    <div class="clearfix"></div>
+
+		</section><!-- /.top-area-->
+		<!-- top-area End -->
+
+		<!--welcome-hero start -->
+		<section id="home" class="welcome-hero">
+			<div class="container">
+				<div class="welcome-hero-txt">
+					<h2>best place to find and correct <br> mistakes in your GUI </h2>
+					<p>
+						 Automatically detect visual defects in GUI | Extract Text From File | Correct spelling mistakes in a text
+					</p>
+				</div>
+				<br><br>
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="subscription-input-group">
+							<form method="POST">
+                            {% csrf_token %}
+								<input type="text" name="text" class="subscription-input-form" placeholder="Enter the text to check spelling mistakes">
+								<button type="submit" class="appsLand-btn subscribe-btn" >
+									Check
+								</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</section><!--/.welcome-hero-->
+		<!--welcome-hero end -->
+
+		<!--subscription strat -->
+        <section id="contact"  class="subscription">
+            <div class="container">
+                <div class="subscribe-title text-center">
+                    <h2>Upload A File</h2>
+                    <p>Check For Spelling Mistakes | Compare with Other Image</p>
+                </div>
+                <div class="row">
+    <div class="col-sm-12">
+        <div class="subscription-input-group">
+            <form id="uploadForm" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <label for="image">Actual Image :</label>
+                <input type="file" id="image" name="image" accept="image/*" class="subscription-input-form"><br><br>
+
+                <label for="c_image">Expected Image :</label>
+                <input type="file" id="c_image" name="c_image" accept="image/*" class="subscription-input-form"><br><br><br>
+
+                <!-- Add checkboxes -->
+                <h3>Check the defects to check:</h3><br>
+
+                <input type="checkbox" id="checkbox1" name="defects" value="wrong_font">
+                <label for="checkbox1">Wrong Font</label> &nbsp;&nbsp;&nbsp;
+                <input type="checkbox" id="checkbox2" name="defects" value="font_size">
+                <label for="checkbox2">Font Size</label>&nbsp;&nbsp;&nbsp;
+
+                <input type="checkbox" id="checkbox3" name="defects" value="background_color">
+                <label for="checkbox3">Background Color</label>&nbsp;&nbsp;&nbsp;
+
+                <input type="checkbox" id="checkbox4" name="defects" value="overlapping_text">
+                <label for="checkbox4">Overlapping Text</label><br>
+                <input type="checkbox" id="checkbox5" name="defects" value="misplaced_elements">
+                <label for="checkbox5">Misplaced Elements</label>&nbsp;&nbsp;&nbsp;
+
+                <input type="checkbox" id="checkbox6" name="defects" value="spelling_mistakes">
+                <label for="checkbox6">Spelling Mistakes</label><br><br>
+
+				<button type="button" id="selectAllBtn" class="btn btn-primary">Select All</button>&nbsp;&nbsp;&nbsp;
+                <button type="submit" name="process" class="btn btn-primary">Process</button>
+            </form>
+        </div>
+    </div>
+</div>
+            </div>
+        </section>
+		<!--subscription end -->
+
+
+		<!--blog start -->
+		<section id="blog" class="blog" >
+			<div class="container">
+				<div class="section-header">
+					<h2>Responses</h2>
+				</div><!--/.section-header-->
+
+				<div class="blog-content">
+
+					 {% if user_text %}
+						<div class="box">
+            				<h2>Input Text: </h2> <br>
+            					<p>{{ user_text }}</p> <br>
+        				</div>
+        				<div class="box">
+            				<h2>Incorrect Words: </h2> <br>
+            			<p>
+                			{% for word in incorrect_words %}
+                			<span class="highlight">{{ word }}</span>
+                			{% endfor %}
+						</p><br>
+        				</div>
+                     {% endif %}
+
+
+					<div class="row">
+						{% if image_url %}
+
+       					 <div class="box">
+            				<h2>Uploaded Image: </h2><br>
+							<img src="{{ image_url }}" alt="Uploaded Image">
+						 </div> <br><br>
+						{% endif %}
+
+					</div>
+
+					<div class="row">
+
+<!--						{% if extracted_text %}-->
+<!--						<div class="col-md-6 col-sm-12">-->
+<!--							<div class="single-blog-item">-->
+<!--								<div class="single-blog-item-txt">-->
+<!-- 									<h2>Extracted Text</h2><br>-->
+<!--									<textarea rows="15" cols="65" readonly>{{ extracted_text }}</textarea>-->
+<!--								</div>-->
+<!--							</div>-->
+<!--						</div>-->
+<!--                        {% endif %}-->
+
+<!--						{% if corrected_text %}-->
+<!--						<div class="col-md-6 col-sm-12">-->
+<!--							<div class="single-blog-item">-->
+<!--								<div class="single-blog-item-txt">-->
+<!--									<h2>Corrected Text</h2><br>-->
+<!--                                    <textarea rows="15" cols="65" readonly>{{ corrected_text }}</textarea>-->
+<!--								</div><br><br>-->
+<!--							</div>-->
+<!--						</div>-->
+<!--						{% endif %}-->
+
+					</div>
+
+					<div class="row">
+						{% if c_image_url %}
+        					<h2>Comparison Results:</h2> <br>
+						    <h3>Expected Image:</h3><br>
+        					<img src="{{ c_image_url }}" alt="Expected Image"><br>
+<!--        					<br><h3>Image 1 with Differences:</h3><br>-->
+<!--        					<img src="{{ diff_image_url1 }}" alt="Differences in Image 1"><br>-->
+        					<br><h3>Image with Differences:</h3><br>
+       						<img src="{{ diff_image_url2 }}" alt="Differences in Image 2"><br>
+<!--        					<br><h3>Combined Differences:</h3><br>-->
+<!--        					<img src="{{ diff_combined_url }}" alt="Combined Differences Image"><br>-->
+						    <br><h3>Spotted Differences:</h3><br>
+        					<p>{{ differences_text|safe }}</p><br>
+    					{% endif %}
+
+					</div>
+
+					<div class="row">
+            <form action="{% url 'generate_pdf' %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="user_text" value="{{ user_text }}">
+                <input type="hidden" name="incorrect_words" value="{{ incorrect_words|join:', ' }}">
+				<input type="hidden" name="uploaded_image" value="{{ image_url }}">
+                <input type="hidden" name="extracted_text" value="{{ extracted_text }}">
+                <input type="hidden" name="corrected_text" value="{{ corrected_text }}">
+                <input type="hidden" name="highlighted_image_url" value="{{ highlighted_image_url }}">
+                <input type="hidden" name="c_image_url" value="{{ c_image_url }}">
+                <input type="hidden" name="diff_image_url1" value="{{ diff_image_url1 }}">
+                <input type="hidden" name="diff_image_url2" value="{{ diff_image_url2 }}">
+                <input type="hidden" name="diff_combined_url" value="{{ diff_combined_url }}">
+                <input type="hidden" name="differences_text" value="{{ differences_text|safe }}">
+                <br><br><button class="btn btn-warning" type="submit">Download PDF</button>
+            </form>
+        </div>
+
+				</div>
+			</div><!--/.container-->
+
+		</section><!--/.blog-->
+		<!--blog end -->
+
+<script>
+    document.getElementById('selectAllBtn').addEventListener('click', function() {
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        const allChecked = Array.from(checkboxes).every(checkbox => checkbox.checked);
+        checkboxes.forEach(checkbox => checkbox.checked = !allChecked);
+    });
+</script>
+
+		<!-- Include all js compiled plugins (below), or include individual files as needed -->
+
+		<script src="{% static 'text_processor/assets/js/jquery.js' %}"></script>
+
+        <!--modernizr.min.js-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+
+		<!--bootstrap.min.js-->
+        <script src="{% static 'text_processor/assets/js/bootstrap.min.js' %}"></script>
+
+		<!-- bootsnav js -->
+		<script src="{% static 'text_processor/assets/js/bootsnav.js' %}"></script>
+
+        <!--feather.min.js-->
+        <script  src="{% static 'text_processor/assets/js/feather.min.js' %}"></script>
+
+        <!-- counter js -->
+		<script src="{% static 'text_processor/assets/js/jquery.counterup.min.js' %}"></script>
+		<script src="{% static 'text_processor/assets/js/waypoints.min.js' %}"></script>
+
+        <!--slick.min.js-->
+        <script src="{% static 'text_processor/assets/js/slick.min.js' %}"></script>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+
+        <!--Custom JS-->
+        <script src="{% static 'text_processor/assets/js/custom.js' %}"></script>
+
+    </body>
+
+</html>
